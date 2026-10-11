@@ -1,0 +1,31 @@
+# Maven and Java build output
+target/
+*.class
+
+# Simulation output and local logs
+results/
+*.log
+simulation.log
+heuristic_run.status
+
+# Local datasets and downloaded/generated workload files
+data/*.csv
+data/*.parquet
+data/*.parquet.gz
+
+# Generated result bundles and charts
+artifacts/results-*/
+
+# Presentation authoring scratch files
+.deck-build/
+*.pptx~
+*.tmp
+
+# IDE and operating-system files
+.idea/
+.vscode/
+__pycache__/
+*.py[cod]
+*.iml
+.DS_Store
+Thumbs.db
