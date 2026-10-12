@@ -2,14 +2,12 @@
 target/
 *.class
 
-# Simulation output and local logs
-results/
+# Local logs
 *.log
 simulation.log
 heuristic_run.status
 
-# Local datasets and downloaded/generated workload files
-data/*.csv
+# Downloaded raw workload files
 data/*.parquet
 data/*.parquet.gz
 
