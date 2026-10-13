@@ -4,6 +4,7 @@ from pathlib import Path
 import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
+from matplotlib.ticker import StrMethodFormatter
 
 ROOT = Path(__file__).resolve().parents[1]
 RESULTS = ROOT / "results"
@@ -43,14 +44,16 @@ groups = [r for r in summary if int(r["size"]) in sizes]
 overall = next(r for r in summary if int(r["size"]) == 0)
 fig, axes = plt.subplots(2, 3, figsize=(15, 8), constrained_layout=True)
 for ax, field, title, ylabel in [
-    (axes[0, 0], "makespan_mean", "Mean makespan", "Seconds"),
-    (axes[0, 1], "cost_mean", "Mean total cost", "Cost units"),
-    (axes[0, 2], "cpu_util_mean", "Mean CPU utilization", "Ratio"),
-    (axes[1, 0], "throughput_mean", "Mean throughput", "Cloudlets / second"),
-    (axes[1, 1], "imbalance_mean", "Mean load imbalance", "Ratio"),
-    (axes[1, 2], "deadline_miss_mean", "Mean deadline miss ratio", "Ratio"),
+    (axes[0, 0], "makespan_mean", "Makespan", "Seconds"),
+    (axes[0, 1], "cost_mean", "Total cost", "Cost units"),
+    (axes[0, 2], "cpu_util_mean", "CPU utilization", "Ratio"),
+    (axes[1, 0], "throughput_mean", "Throughput", "Cloudlets / second"),
+    (axes[1, 1], "imbalance_mean", "Load imbalance", "Ratio"),
+    (axes[1, 2], "deadline_miss_mean", "Deadline miss ratio", "Ratio"),
 ]:
     ax.plot(sizes, values(groups, field), marker="o", color="#4472C4")
+    ax.set_xticks(sizes)
+    ax.xaxis.set_major_formatter(StrMethodFormatter("{x:,.0f}"))
     ax.set_title(title)
     ax.set_xlabel("Cloudlets")
     ax.set_ylabel(ylabel)
