@@ -7,3 +7,4 @@ algorithm=SJF
 workload_selection=first size rows from workload.csv; no sampling
 topology=2 datacenters; 2 hosts per datacenter; 2 VMs per host
 vm_allocation=static VmSpec.hostId mapping
+last_run_server_utc=2026-10-13T08:33:49+00:00
